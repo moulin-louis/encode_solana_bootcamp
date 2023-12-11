@@ -1,16 +1,13 @@
 fn fizz_buzz() {
     let mut result = 0;
-    for idx in 0..=301 {
-        let fizz = idx % 3 == 0;
-        let buzz = idx % 5 == 0;
-
-        match (fizz, buzz) {
+    for idx in 1..=301 {
+        match ( idx % 3 == 0, idx % 5 == 0) {
             (true, true) => {
                 result += 1;
                 println!("{}","fizz buzz")
             },
-            (true, false) => println!("{}","fizz"),
-            (false, true) => println!("{}","buzz"),
+            (true, false) => println!("fizz"),
+            (false, true) => println!("buzz"),
             (false, false) => println!("{}",idx),
         };
     }

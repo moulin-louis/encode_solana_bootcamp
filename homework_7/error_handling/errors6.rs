@@ -18,10 +18,10 @@ enum ParsePosNonzeroError {
 }
 
 impl ParsePosNonzeroError {
-    fn from_creation(err: CreationError) -> ParsePosNonzeroError{
-        ParsePosNonzeroError::Creation(err)
+    fn from_creation(i: CreationError) -> ParsePosNonzeroError {
+        ParsePosNonzeroError::Creation(i)
     }
-}
+} 
 
 fn parse_pos_nonzero(s: &str)
     -> Result<PositiveNonzeroInteger, ParsePosNonzeroError>
@@ -30,7 +30,7 @@ fn parse_pos_nonzero(s: &str)
     // when `parse()` returns an error.
     let x: i64 = match s.parse() {
         Ok(x) => x,
-        Err(e) => return Err(ParsePosNonzeroError::ParseInt(e)),
+        Err(x) => return Err(ParsePosNonzeroError::ParseInt(x)),
     };
     PositiveNonzeroInteger::new(x)
         .map_err(ParsePosNonzeroError::from_creation)
